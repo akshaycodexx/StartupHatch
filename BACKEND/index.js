@@ -19,7 +19,6 @@ import userRoutes from './routes/userRoutes.js';
 import insightsRoutes from './routes/insightsRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 
-
 // Load environment variables
 dotenv.config();
 
@@ -28,39 +27,32 @@ connectDB();
 
 const app = express();
 const server = http.createServer(app);
+
+// Socket.io setup
 const io = new Server(server, {
   cors: {
-    origin: "*", // In production, restrict this to your frontend's URL
-    methods: ["GET", "POST"]
+    origin: ['https://startup-hatch.vercel.app'], // Only allow your frontend
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
   }
 });
 
-// Make io accessible to our controllers
 app.set('io', io);
-
-// Setup socket connection handling
 socketHandler(io);
 
 const PORT = process.env.PORT || 5001;
 
-// Core Middleware
-// Define allowed origins
-const allowedOrigins = [
-    'https://startup-hatch.vercel.app/' 
-];
-
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    }
-}));
+// Middleware
 app.use(express.json());
 
-// Mount all routers
+// CORS middleware for frontend
+app.use(cors({
+  origin: ['https://startup-hatch.vercel.app'], // Your frontend URL
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+}));
+
+// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/business', businessRoutes);
 app.use('/api/investors', investorRoutes);
@@ -72,15 +64,16 @@ app.use('/api/users', userRoutes);
 app.use('/api/insights', insightsRoutes);
 app.use('/api/admin', adminRoutes);
 
-
-// Custom Error Handler Middleware (must be last)
+// Custom Error Handler (last middleware)
 app.use(errorHandler);
 
-// Start the server
-server.listen(PORT, () => console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`));
+// Start server
+server.listen(PORT, () => {
+  console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+});
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
-    console.log(`Error: ${err.message}`);
-    server.close(() => process.exit(1));
+  console.error(`Error: ${err.message}`);
+  server.close(() => process.exit(1));
 });
