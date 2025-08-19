@@ -2,12 +2,12 @@
 
 import axios from 'axios';
 
+// src/services/api.js
 const API = axios.create({
-  baseURL: 'https://startuphatch.onrender.com',
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: 'https://startuphatch.onrender.com/api', // ensure /api prefix if backend routes use it
+  withCredentials: true, // ✅ important for cookies
 });
+
 
 API.interceptors.request.use(
   (config) => {
