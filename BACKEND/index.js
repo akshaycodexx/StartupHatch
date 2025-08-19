@@ -46,7 +46,7 @@ const PORT = process.env.PORT || 5001;
 // Core Middleware
 // Define allowed origins
 const allowedOrigins = [
-    'https://venturvault.vercel.app' // Your Vercel frontend URL
+    'https://startup-hatch.vercel.app/' 
 ];
 
 app.use(cors({
