@@ -65,23 +65,23 @@ const CareersPage = () => {
 
     return (
         <div className="bg-slate-50">
-            <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+            <div className="px-4 py-16 mx-auto max-w-7xl sm:py-24 sm:px-6 lg:px-8">
                 <motion.div 
                     className="text-center"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="text-base font-semibold text-teal-600 tracking-wide uppercase">Join Our Mission</h2>
+                    <h2 className="text-base font-semibold tracking-wide text-teal-600 uppercase">Join Our Mission</h2>
                     <p className="mt-1 text-4xl font-extrabold text-slate-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
                         Build the Future of Indian Startups
                     </p>
-                    <p className="max-w-xl mt-5 mx-auto text-xl text-slate-500">
+                    <p className="max-w-xl mx-auto mt-5 text-xl text-slate-500">
                         We're looking for passionate, talented individuals to join us in empowering the next generation of entrepreneurs.
                     </p>
                 </motion.div>
 
-                <div className="mt-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div className="grid grid-cols-1 gap-12 mt-20 lg:grid-cols-3">
                     {/* Job List */}
                     <motion.div 
                         className="lg:col-span-1"
@@ -117,7 +117,7 @@ const CareersPage = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
                                     transition={{ duration: 0.3 }}
-                                    className="bg-white p-8 rounded-xl shadow-2xl border border-gray-100"
+                                    className="p-8 bg-white border border-gray-100 shadow-2xl rounded-xl"
                                 >
                                     <span className="inline-block px-3 py-1 text-xs font-semibold text-teal-800 bg-teal-100 rounded-full">{selectedJob.department}</span>
                                     <h3 className="mt-4 text-2xl font-bold text-slate-900">{selectedJob.title}</h3>
@@ -125,7 +125,7 @@ const CareersPage = () => {
                                     
                                     <div className="mt-6 prose prose-slate max-w-none">
                                         <p>{selectedJob.description}</p>
-                                        <h4 className="font-semibold mt-6">Key Requirements:</h4>
+                                        <h4 className="mt-6 font-semibold">Key Requirements:</h4>
                                         <ul>
                                             {selectedJob.requirements.map((req, index) => (
                                                 <li key={index}>{req}</li>
@@ -134,8 +134,8 @@ const CareersPage = () => {
                                     </div>
 
                                     <motion.a 
-                                        href={`mailto:careers@venturvault.com?subject=Application for ${selectedJob.title}`} 
-                                        className="mt-8 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-600"
+                                        href={`mailto:akshaycodexgmail.com.com?subject=Application for ${selectedJob.title}`} 
+                                        className="inline-flex items-center justify-center px-6 py-3 mt-8 text-base font-medium text-white bg-teal-600 border border-transparent rounded-md shadow-sm"
                                         whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(20, 184, 166, 0.3)" }}
                                         whileTap={{ scale: 0.95 }}
                                     >

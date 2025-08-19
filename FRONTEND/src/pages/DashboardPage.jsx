@@ -22,12 +22,12 @@ const DashboardPage = () => {
             default:
                 return (
                     <motion.div 
-                        className="bg-white/60 backdrop-blur-xl p-6 rounded-2xl shadow-lg border border-gray-200/50"
+                        className="p-6 border shadow-lg bg-white/60 backdrop-blur-xl rounded-2xl border-gray-200/50"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                        <h2 className="text-xl font-bold text-slate-800">Welcome to VENTURVAULT</h2>
+                        <h2 className="text-xl font-bold text-slate-800">Welcome to StartupHatch</h2>
                         <p className="mt-2 text-slate-600">Your journey starts here. Explore the platform to find what you're looking for.</p>
                     </motion.div>
                 );
@@ -45,8 +45,8 @@ const DashboardPage = () => {
     };
 
     return (
-        <div className="bg-slate-100 min-h-full">
-            <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-full bg-slate-100">
+            <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div 
                     className="pb-8 border-b border-gray-200"
@@ -60,13 +60,13 @@ const DashboardPage = () => {
 
                 {/* Main Content Grid */}
                 <motion.div 
-                    className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8"
+                    className="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3"
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                 >
                     {/* Left Column */}
-                    <motion.div className="lg:col-span-2 space-y-8" variants={itemVariants}>
+                    <motion.div className="space-y-8 lg:col-span-2" variants={itemVariants}>
                         {renderRoleSpecificContent()}
                     </motion.div>
 

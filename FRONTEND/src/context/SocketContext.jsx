@@ -11,7 +11,7 @@ export const SocketProvider = ({ children }) => {
 
     useEffect(() => {
         if (token) {
-            const newSocket = io('http://localhost:5001', {
+            const newSocket = io('https://startuphatch.onrender.com', {
                 auth: { token }
             });
             setSocket(newSocket);

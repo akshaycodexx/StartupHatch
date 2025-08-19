@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://venturvault.onrender.com/api',
+  baseURL: 'https://startuphatch.onrender.com',
   headers: {
     'Content-Type': 'application/json',
   },

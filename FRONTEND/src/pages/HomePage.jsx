@@ -109,27 +109,27 @@ const AnimatedBackground = () => {
         };
     }, []);
 
-    return <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full z-0" />;
+    return <canvas ref={canvasRef} className="absolute top-0 left-0 z-0 w-full h-full" />;
 };
 
 // A dedicated Navbar for the Homepage
 const HeroNavbar = () => {
     return (
         <motion.nav 
-            className="absolute top-0 left-0 right-0 z-30 py-6 px-4 sm:px-6 lg:px-8"
+            className="absolute top-0 left-0 right-0 z-30 px-4 py-6 sm:px-6 lg:px-8"
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
         >
-            <div className="max-w-7xl mx-auto flex justify-between items-center">
+            <div className="flex items-center justify-between mx-auto max-w-7xl">
                 <Link to="/" className="flex items-center space-x-2">
-                    <BriefcaseIcon className="h-8 w-8 text-teal-400" />
-                    <span className="font-bold text-2xl text-white">VENTURVAULT</span>
+                    <BriefcaseIcon className="w-8 h-8 text-teal-400" />
+                    <span className="text-2xl font-bold text-white">StartupHatch</span>
                 </Link>
-                <div className="hidden md:flex items-center space-x-8">
-                    <Link to="/about" className="text-slate-300 hover:text-white transition-colors font-medium">About</Link>
-                    <Link to="/careers" className="text-slate-300 hover:text-white transition-colors font-medium">Careers</Link>
-                    <Link to="/contact" className="text-slate-300 hover:text-white transition-colors font-medium">Contact</Link>
+                <div className="items-center hidden space-x-8 md:flex">
+                    <Link to="/about" className="font-medium transition-colors text-slate-300 hover:text-white">About</Link>
+                    <Link to="/careers" className="font-medium transition-colors text-slate-300 hover:text-white">Careers</Link>
+                    <Link to="/contact" className="font-medium transition-colors text-slate-300 hover:text-white">Contact</Link>
                 </div>
                 <div>
                     <Link to="/login" className="px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all">
@@ -144,16 +144,16 @@ const HeroNavbar = () => {
 
 const HomePage = () => {
     return (
-        <div className="relative bg-slate-900 h-screen flex items-center justify-center overflow-hidden">
+        <div className="relative flex items-center justify-center h-screen overflow-hidden bg-slate-900">
             <AnimatedBackground />
             <HeroNavbar />
             
             {/* Overlay to darken the background and improve text readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-900 z-10"></div>
+            <div className="absolute inset-0 z-10 bg-gradient-to-b from-slate-900/50 to-slate-900"></div>
 
-            <div className="relative z-20 text-center px-4">
+            <div className="relative z-20 px-4 text-center">
                 <motion.h1 
-                    className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-7xl"
+                    className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-7xl"
                     initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -162,7 +162,7 @@ const HomePage = () => {
                     <span className="block text-teal-400">Innovation Meets Capital</span>
                 </motion.h1>
                 <motion.p 
-                    className="mt-3 max-w-md mx-auto text-base text-slate-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
+                    className="max-w-md mx-auto mt-3 text-base text-slate-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -170,18 +170,18 @@ const HomePage = () => {
                     A unified ecosystem designed for India's founders, investors, and advisors. Raise funds, find mentors, and build the future.
                 </motion.p>
                 <motion.div 
-                    className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8"
+                    className="max-w-md mx-auto mt-5 sm:flex sm:justify-center md:mt-8"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
                 >
                     <div className="rounded-md shadow">
-                        <Link to="/register" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 md:py-4 md:text-lg md:px-10 transition-transform transform hover:scale-105">
+                        <Link to="/register" className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white transition-transform transform bg-teal-600 border border-transparent rounded-md hover:bg-teal-700 md:py-4 md:text-lg md:px-10 hover:scale-105">
                             Start a Proposal
                         </Link>
                     </div>
                     <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                        <Link to="/proposals" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-teal-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                        <Link to="/proposals" className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-teal-600 bg-white border border-transparent rounded-md hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
                             Explore Investments
                         </Link>
                     </div>
